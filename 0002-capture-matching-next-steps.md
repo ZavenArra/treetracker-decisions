@@ -1,6 +1,6 @@
 # Selecting the next steps to take to improve capture matching capabilties
 
-* Status: proposed 
+* Status: proposed
 * Deciders: @ZavenArra @DavidEzraJay Cam Webb, @Elforama {list everyone involved in the decision using github handle} <!-- optional -->
 * Date: 2022-05-11
 
@@ -27,7 +27,7 @@ We have implemented a basic manual capturing tool that allows admin users to vis
 3. Create experimental manual capture matching UI that offers manual spatial analysis relevant to disambiguating matching captures.
 4. Research approaches to image analysis that can produce a similarity metric to improve selection of candidates for location based matching of captures.
 5. Attempt to train models using machine learning based on existing database of capture images to identify repeat captures.
-6. Incorporate assigned species information during capture matching.
+6. Incorporate other data points (e.g. assigned species information when available) during capture matching.
 
 <!--
 ## Decision Outcome
@@ -51,9 +51,9 @@ Chosen option: "{option 1}", because {justification. e.g., only option, which me
 
 Currently, images captured on the mobile application do not have specific criteria guiding capture.  Thus, they exist at a variety of camera rotation angles and compass bearings, even for the same tree being repeat captured.  This requires a manual operator to consider images of the same tree that almost always exist at different rotations and focal distances, greatly enhancing the difficulty of an already challenging manual task.
 
-Constraints can be implemented on the mobile side to ameliorate this situation.  For instance, camera rotation around the x axis could be constrained to 0, 45, and 90 degrees.  Additionally, compass bearing could be constrained such that captured photos are always north facing.  Implementing a constraint on focal distance is also possible, as has been identified in other apps.  
+Constraints can be implemented on the mobile side to ameliorate this situation.  For instance, camera rotation around the x axis could be constrained to 0, 45, and 90 degrees.  Additionally, compass bearing could be constrained such that captured photos are always north facing.  Implementing a constraint on focal distance is also possible, as has been identified in other apps.
 
-* Good, because the images captured will have more constitant parameters. 
+* Good, because the images captured will have more constitant parameters.
 * Good, because this only affect the mobile application and does not require data research or algorithm development.
 * Bad, because the mobile application will become more complex for our low technical literacy users, and we will have to invest careful UX/UI development time to make these features easily usable.
 
@@ -61,7 +61,7 @@ Constraints can be implemented on the mobile side to ameliorate this situation. 
 
 Preliminary research has shown that GPS measurements between trees, and along the path of tree trackers traveling between trees, have errors against true position that are highly autocorrelated.  This means that while the absolute position of a give measurement can be 3-10m off using L2 GPS technology, the direction of travel between measurements is relatively stable across site visits.  This presents opportunities for leveraging this similarity to identify captures in the vicinity of a capture from a previous site visit that are more likely to be repeat visits to the same tree, which can be used to present more likely candidates during the manual matching process.
 
-* Good, because this does not affect the mobile users 
+* Good, because this does not affect the mobile users
 * Good, because this feature uses data we are already collecting
 * Good, because some preliminary research has already been done (@ZavenArra) that shows potential for this solution to work.
 * Bad, because this feature requires advanced skills in GIS analysis and algorithm development.
@@ -86,7 +86,7 @@ Tree seedlings typically look quite similar, however this is somewhat age depend
 
 ### 5. Attempt to train models using machine learning based on existing database of capture images to identify repeat captures.
 
-Some interest has been expressed in exploring options to leverage machine learning to create a 'seedling recognition' algorithm.  Cam Webb produced the following feasibility study of this approach: https://camwebb.info/files/webb2022_thtp_recaptures.pdf.  The feasibilty study reports that machine learning cannot be leveraged to produce a 'seedline recognition' algorithm.   This does not rule out some other, creative application of machine learning however, such as that consistent tiwht option #4  
+Some interest has been expressed in exploring options to leverage machine learning to create a 'seedling recognition' algorithm.  Cam Webb produced the following feasibility study of this approach: https://camwebb.info/files/webb2022_thtp_recaptures.pdf.  The feasibilty study reports that machine learning cannot be leveraged to produce a 'seedline recognition' algorithm.   This does not rule out some other, creative application of machine learning however, such as that consistent tiwht option #4
 
 * Good, because this does not affect mobile users
 * Bad, because our current image captures are not standardized
@@ -98,8 +98,14 @@ Some interest has been expressed in exploring options to leverage machine learni
 Treetracker intends to assign species information to all incoming captures as part of capture verification.  Once assigned, this information can be used to reduce the candidate captures for assigning repeat visits in the manual capture matching tool.
 
 * Good, because this feature only affects the API the provides candidate captures for matching.
+* Good, because the data is attached to the capture instance.
+* Good, because some data points will be consistent across species so it can be collected even if we don't know the species at first
+* Good, because it is not technology dependent, just pure data collection
 * Bad, because species information is currenly only available in a subset of projects.
-* Bad, because not all projets plant multiple species at the same site.
+* Bad, because not all projects plant multiple species at the same site.
+* Bad, because it might require some training to identify data points
+* Bad, because it will depend on attention to detail of each user and may result in inconsistent quality data collected
+* Bad, because useful data points will have to be chosen for collection, separating species-specific from general categories
 
 
 
