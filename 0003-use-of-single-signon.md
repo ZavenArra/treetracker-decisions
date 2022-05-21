@@ -56,6 +56,21 @@ Chosen option: "{option 1}", because {justification. e.g., only option, which me
 
 ### 2. Implement SSO for all providers supported by Keycloak
 
+* Good, because with supporting popular provider like Google, Facebook, the end user to Greenstand don't need to maintain the account on Greenstand, and the account creation workflow could be smoother and safer. It is like: 
+
+  1. End user try to login to Greenstand
+  2. End user selects the provider and authorize the application. 
+  3. The administrator of Greenstand receives the notification.
+  4. The administrator of Greenstand confirm the end user, and assign the user appropriate role/permission.
+
+  Without this support:
+
+  1. End user give the administrator their info.
+  2. Administrator receive the info and create user, password, assign the user appropriate role/permission.
+  3. The administrator give the user the account along with password.
+
+  So the former have no password and detailed user info exchange;
+
 {example | description | pointer to more information | …} <!-- optional -->
 
 * Good, because {argument a}
