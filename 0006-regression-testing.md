@@ -16,11 +16,13 @@ Manual regression tests are needed for some frontend features that do not have a
 * Ease of documenting a regression test
 * Clarity of process for test performance
 * Reporting of test status
+* Ease of updating a test and change tracking
+* Ease of referencing test case and result from issues
 
 ## Considered Options
 
 1. Template format for regression test description, with automation to generate test checklist for QC 
-2. Other options?
+2. Third-party test management tool
 
 <!--
 ## Decision Outcome
@@ -55,3 +57,15 @@ The developer will close this issue when it has been determined that a release i
 * Good, because there is a standard format for regression tests
 * Good, because it creates a semi-automated process supporting QC operators
 * Bad, because it requires some github actions development work
+
+### Third-party test management tool
+
+Use a free third-party test management tool to create and update test cases, and to record test runs against new releases.
+
+There are some standalone options such as [Testify](https://testify.io), and GitHub apps like [TestQuality](https://github.com/marketplace/testquality) or [Testspace.com](https://github.com/marketplace/testspace-com).
+
+* Good, because a mature, maintained tool gives us a lot of features out of the box that follow QC best practices
+* Good, because several of the options integrate well with GitHub Workflows and could aggregate automated test results
+* Good, because many tools are free for open-source projects
+* Bad, because effort is required to evaluate the different options
+* Bad, because we introduce an extra project dependency with associated learning curve and maintenence overhead
